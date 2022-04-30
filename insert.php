@@ -29,7 +29,7 @@ if (isset($_POST['insert'])) {
 
     if ($lastInsertId) {
         echo "<script>alert('record insert successfully');</script>";
-        echo "<script>window.location.href='index1.php'</script>";
+        echo "<script>window.location.href='index.php'</script>";
     } else {
         echo "<script>alert('Error');</script>";
         echo "<script>window.location.href='index.php'</script>";
