@@ -1,75 +1,43 @@
 <?php
 
 require_once'dbconfig.php';
-session_start();
 
 if (isset($_POST['insert'])) {
-    $user1 = $_POST['user'];
-    $sql = "SELECT user FROM users";
-    
-    $query = $conn->prepare($sql);
-    $query->execute();
-    $results = $query->fetchAll(PDO::FETCH_OBJ);
-    foreach ($results as $result) {
-        $a = $result->user;
-        $z = strcmp ($a,$user1);
-        if ($z == 0 ){
-            echo "<script>alert('نام کاربری موجود است خواهشا یک نام کاربری دیگر استفاده کنید');</script>";
-            echo "<script>window.location.href='insert.php'</script>";
-            exit;
-        }
-        $w = strcmp ($email,$email1);
-        if ($w != 0 ){
-            echo "<script>alert('ایمیل موجود است یا ایمیل خالی رها شده');</script>";
-            echo "<script>window.location.href='insert.php'</script>";
-            exit;
-        }
-    }
+    $user = $_POST['user'];
     $pas = $_POST['pas'];
     $pas1 = $_POST['pas1'];
     $fname = $_POST['firstName'];
     $lname = $_POST['lastName'];
-    $email1 = $_POST['email'];
+    $email = $_POST['email'];
     $address = $_POST['address'];
     $phone = intval($_POST['phone']);
-    $r = strcmp ($pas,$pas1);
-    if ($r != 0) {
-        echo "<script>alert('NOt mach pas');</script>";
+
+    $sql = "INSERT INTO users(user,pas,pas1,firstName,lastName,email,address,phone) VALUES(:user,:pas,:pas1,:firstname,:lastname,:email,:address,:phone)";
+
+    $query = $conn->prepare($sql);
+    $query->bindParam(':user', $user, PDO::PARAM_STR);
+    $query->bindParam(':pas', $pas, PDO::PARAM_STR);
+    $query->bindParam(':pas1', $pas1, PDO::PARAM_STR);
+    $query->bindParam(':firstname', $fname, PDO::PARAM_STR);
+    $query->bindParam(':lastname', $lname, PDO::PARAM_STR);
+    $query->bindParam(':email', $email, PDO::PARAM_STR);
+    $query->bindParam(':address', $address, PDO::PARAM_STR);
+    $query->bindParam(':phone', $phone, PDO::PARAM_STR);
+    $query->execute();
+
+    $lastInsertId = $conn->lastInsertId();
+
+    if ($lastInsertId) {
+        echo "<script>alert('record insert successfully');</script>";
+        echo "<script>window.location.href='index.php'</script>";
+    } else {
+        echo "<script>alert('Error');</script>";
         echo "<script>window.location.href='index.php'</script>";
     }
-   
-    if ($r == 0){
-        $sql = "INSERT INTO users(user,pas,pas1,firstName,lastName,email,address,phone) VALUES(:user,:pas,:pas1,:firstname,:lastname,:email,:address,:phone)";
-
-        $query = $conn->prepare($sql);
-        $query->bindParam(':user', $user1, PDO::PARAM_STR);
-        $query->bindParam(':pas', $pas, PDO::PARAM_STR);
-        $query->bindParam(':pas1', $pas1, PDO::PARAM_STR);
-        $query->bindParam(':firstname', $fname, PDO::PARAM_STR);
-        $query->bindParam(':lastname', $lname, PDO::PARAM_STR);
-        $query->bindParam(':email', $email1, PDO::PARAM_STR);
-        $query->bindParam(':address', $address, PDO::PARAM_STR);
-        $query->bindParam(':phone', $phone, PDO::PARAM_STR);
-        $query->execute();
-
-        $lastInsertId = $conn->lastInsertId();
-
-        if ($lastInsertId) {
-            echo "<script>alert('record insert successfully');</script>";
-            echo "<script>window.location.href='index.php'</script>";
-        } else {
-            echo "<script>alert('Error');</script>";
-            echo "<script>window.location.href='index.php'</script>";
-        }
-    }
-
 }
 
 
 ?>
-
-
-
 
 <!DOCTYPE html>
 <html lang="en">

@@ -1,7 +1,8 @@
 <?php
 
+
 require_once'dbconfig.php';
-session_start();
+
 
 ?>
 
@@ -17,46 +18,7 @@ session_start();
     <title>فروشگاه</title>
 </head>
 <body>
-    <nav class="navbar">
-        <div class="nav">
-            <img src="img/Dataextraction.svg" class="brand-logo" alt="">
-            <div class="nav-item">
-                <div class="search">
-                    <input type="text" class="search-box" placeholder="جست وجو در بین کالا و سازنده">
-                    <button class="search-btn">جست و جو</button>
-                </div>
-                <a href="login.Php"><?php if( isset($_SESSION["id"]) ){$user1 = $_POST['user'];
-                 $pas = $_POST['pas'];
-                 $sql = "SELECT user , pas , id ,firstName ,lastName ,email , phone ,address  FROM users";
-                 $id_1= $_SESSION["id"];
-                 $query = $conn->prepare($sql);
-                 $query->execute();
-                 $results = $query->fetchAll(PDO::FETCH_OBJ);
-                 foreach ($results as $result) {
-                     $id = $result->id;
-                     if ($id_1 == $id){
-                         $a = $result->user;
-                         $fn = $result->firstName ;
-                         $ln = $result->lastName ;
-                         $em = $result->email ;
-                         $ph = $result->phone ;
-                         $ad = $result->address ;
-                     }
-                    
-                    } echo($a); echo"@";}?><i class="fas fa-user"></i></a>
-                <a href="../prj1/index.php"><?php session_destroy();?><i class="fas fa-shopping-cart"></i></a>
-
-            </div>
-        </div>
-        <ul class="Links-container">
-            <li class="Link-item"><a href="" class="Link">خانه</a></li>
-            <li class="Link-item"><a href="" class="Link">مردانه</a></li>
-            <li class="Link-item"><a href="" class="Link">زنانه</a></li>
-            <li class="Link-item"><a href="" class="Link">بچه گانه</a></li>
-            <li class="Link-item"><a href="" class="Link">ساخت</a></li>
-
-        </ul>
-    </nav>
+    <nav class="navbar"></nav>
     <!--hero-->
     <header class="hero-section">
         

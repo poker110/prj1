@@ -1,18 +1,6 @@
 <?php
 
-session_start();
-
-if( !isset($_SESSION["ad"]) ){
-
-    header('Location: login.php');
-    exit;
-} else {
-    // محتوای صفحه حفاظت شده
-}
-
-
 require_once'dbconfig.php';
-
 
 if(isset($_REQUEST['del'])){
 
@@ -27,7 +15,6 @@ if(isset($_REQUEST['del'])){
 
 
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
