@@ -1,0 +1,36 @@
+body {
+    background-color: #999;
+
+    
+}
+.profile-img {
+    padding-right: 100px;
+   
+    
+}
+.profile-img img {
+    width: 200px;
+    height: 200px;
+    
+    
+    position: absolute;
+}
+.profile-img input {
+    padding-top: 170px;
+    position: relative;
+}
+
+.body {
+    padding-top: 100px;
+    padding-right: 200px;
+    background-color: rgb(156, 158, 141);
+    display: flex;
+    
+}
+.form{
+    padding-top: 10px;
+    align-items: center;
+}
+.name_kar {
+    
+}
