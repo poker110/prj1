@@ -8,7 +8,7 @@ const createNav = () =>{
                     <input type="text" class="search-box" placeholder="جست وجو در بین کالا و سازنده">
                     <button class="search-btn">جست و جو</button>
                 </div>
-                <a href=""><i class="fas fa-user"></i></a>
+                <a href="login.html"><i class="fas fa-user"></i></a>
                 <a href=""><i class="fas fa-shopping-cart"></i></a>
 
             </div>
