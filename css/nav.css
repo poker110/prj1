@@ -62,10 +62,16 @@
 .search-box::placeholder{
     color: #a9a9a9;
 }
-.nav-item a i {
+.nav-item a {
    
     padding: 15px 30px;
     height: 50px;
+
+}
+.nav-item a i {
+   
+    padding-right: 10px;
+    
 
 }
 .Links-container{
